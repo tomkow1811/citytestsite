@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bantam Hub</title>
+    <!-- Pulls in Tailwind CSS styling automatically -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        claret: '#7a2346',
+                        amber: '#f8a313',
+                        darkbg: '#111827',
+                        cardbg: '#1f2937'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkbg text-gray-200 p-4 md:p-8 font-sans">
+
+    <!-- Header -->
+    <header class="max-w-7xl mx-auto mb-8 border-b border-claret pb-4 flex flex-col md:flex-row justify-between items-start md:items-end">
+        <div>
+            <h1 class="text-4xl font-bold text-amber tracking-tight">BANTAM<span class="text-white">HUB</span></h1>
+            <p class="text-sm text-gray-400 mt-1">The modern Bradford City dashboard</p>
+        </div>
+        <div class="mt-4 md:mt-0 bg-cardbg px-4 py-2 rounded-lg border border-gray-700 text-sm">
+            Next Match: <strong class="text-white">Reading (A)</strong> - Sat 3 Oct
+        </div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Left Column: Fixtures & Odds -->
+        <div class="space-y-6">
+            
+            <!-- Odds Card -->
+            <div class="bg-cardbg p-5 rounded-xl border-t-4 border-amber shadow-lg">
+                <h2 class="text-xl font-bold mb-4 text-white">Next Fixture Odds</h2>
+                <div class="bg-gray-800 rounded p-4 text-center border border-gray-700">
+                    <div class="text-xs text-gray-400 mb-2 uppercase tracking-wide">EFL League One</div>
+                    <div class="flex justify-between items-center font-bold text-lg mb-4">
+                        <span>Reading</span>
+                        <span class="text-gray-500 text-sm">v</span>
+                        <span class="text-amber">City</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                        <div class="bg-gray-900 p-2 rounded">Home<br><span class="text-amber font-bold">6/4</span></div>
+                        <div class="bg-gray-900 p-2 rounded">Draw<br><span class="text-amber font-bold">12/5</span></div>
+                        <div class="bg-gray-900 p-2 rounded">Away<br><span class="text-amber font-bold">13/8</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Feed Card -->
+            <div class="bg-cardbg p-5 rounded-xl shadow-lg border border-gray-800">
+                <h2 class="text-xl font-bold mb-4 text-white flex justify-between items-center">
+                    Latest News <span class="text-xs font-normal text-claret bg-red-100 px-2 py-1 rounded">LIVE</span>
+                </h2>
+                <ul class="space-y-4 text-sm">
+                    <li class="border-b border-gray-700 pb-3"><a href="#" class="hover:text-amber transition">Alexander hints at formation change ahead of Reading trip</a></li>
+                    <li class="border-b border-gray-700 pb-3"><a href="#" class="hover:text-amber transition">Injury update: Baldwin expected back in training</a></li>
+                    <li><a href="#" class="hover:text-amber transition">Tickets for Rotherham away sold out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Middle Column: Live Table with Fallback -->
+        <div class="bg-cardbg p-5 rounded-xl border-t-4 border-claret shadow-lg lg:col-span-1 border border-gray-800 relative min-h-[500px]">
+            <h2 class="text-xl font-bold mb-4 text-white">Live League Table</h2>
+            
+            <!-- FALLBACK TEXT: Displays if train Wi-Fi blocks the script -->
+            <div class="absolute inset-0 top-16 flex flex-col items-center justify-center text-center p-6 text-gray-500">
+                <svg class="w-8 h-8 mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                <p class="text-sm">Table unavailable on restricted public Wi-Fi.</p>
+                <p class="text-xs mt-1 text-claret">Switch to mobile data to view.</p>
+            </div>
+
+            <!-- SCOREAXIS WIDGET: Sits on top of the fallback -->
+            <div class="relative z-10 w-full bg-cardbg">
+                <div id="widget-wkfrmupjke5u" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #e5e7eb;border: 1px solid;border-color: #374151;overflow: auto; border-radius: 8px;">
+                <script src="https://widgets.scoreaxis.com/api/football/league-table/62322c24ab744d39ef6504b6?widgetId=wkfrmupjke5u&lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&noFollowLinks=0&font=roboto&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=transparent&textColor=%23e5e7eb&linkColor=%23e5e7eb&borderColor=%23374151&tabColor=%231f2937" async></script>
+                <div class="widget-main-link" style="padding: 6px 12px;font-weight: 500; font-size: 11px; text-align: center; border-top: 1px solid #374151;">Live data by <a href="https://www.scoreaxis.com/" target="_blank" style="color: #f8a313;">Scoreaxis</a></div></div>
+            </div>
+        </div>
+
+        <!-- Right Column: The Community Links -->
+        <div class="bg-cardbg p-5 rounded-xl shadow-lg border border-gray-800">
+            <h2 class="text-xl font-bold mb-4 text-white">Community & Content</h2>
+            <div class="space-y-4">
+                <a href="https://widthofapost.com/" target="_blank" class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition border-l-4 border-amber">
+                    <h3 class="font-bold text-white">Width of a Post</h3>
+                    <p class="text-xs text-gray-400 mt-1">Long-form analysis and opinion.</p>
+                </a>
+                <a href="#" target="_blank" class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition border-l-4 border-claret">
+                    <h3 class="font-bold text-white">The City Vent</h3>
+                    <p class="text-xs text-gray-400 mt-1">Latest podcast episodes & video reactions.</p>
+                </a>
+                <a href="#" target="_blank" class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition border-l-4 border-gray-500">
+                    <h3 class="font-bold text-white">Bantam Talk</h3>
+                    <p class="text-xs text-gray-400 mt-1">Traditional messageboard discussions.</p>
+                </a>
+                
+                <hr class="border-gray-700 my-6">
+
+                <a href="#" class="block bg-[#5865F2] p-4 rounded-lg hover:bg-[#4752C4] transition text-white text-center font-bold shadow-lg">
+                    Join the Hub Discord
+                </a>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
