@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Midland Road | Bradford City Dashboard</title>
-    <!-- Pulls in Tailwind CSS styling automatically -->
+    <title>Midland Road | Bradford City Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -34,10 +33,9 @@
         </div>
     </header>
 
-    <!-- Main Grid Layout -->
     <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- Left Column: Fixtures & Odds -->
+        <!-- Left Column -->
         <div class="space-y-6">
             
             <!-- Odds Card -->
@@ -58,39 +56,34 @@
                 </div>
             </div>
 
-            <!-- News Feed Card -->
+            <!-- LIVE News Feed Card -->
             <div class="bg-cardbg p-5 rounded-xl shadow-lg border border-gray-800">
                 <h2 class="text-xl font-bold mb-4 text-white flex justify-between items-center">
                     Latest News <span class="text-xs font-normal text-claret bg-red-100 px-2 py-1 rounded">LIVE</span>
                 </h2>
-                <ul class="space-y-4 text-sm">
-                    <li class="border-b border-gray-700 pb-3"><a href="#" class="hover:text-amber transition">Manager Search: Heckingbottom and McCall linked to vacant Valley Parade job</a></li>
-                    <li class="border-b border-gray-700 pb-3"><a href="#" class="hover:text-amber transition">Alexander departs for Preston North End after fine start to the season</a></li>
-                    <li><a href="#" class="hover:text-amber transition">Reading away: Ticket allocation update ahead of weekend clash</a></li>
+                <!-- The ID here connects to the Javascript at the bottom -->
+                <ul id="live-news-feed" class="space-y-4 text-sm">
+                    <li class="animate-pulse text-gray-500">Fetching latest articles...</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Middle Column: Live Table with Fallback -->
+        <!-- Middle Column: Pure Iframe Table -->
         <div class="bg-cardbg p-5 rounded-xl border-t-4 border-claret shadow-lg lg:col-span-1 border border-gray-800 relative min-h-[500px]">
             <h2 class="text-xl font-bold mb-4 text-white">Live League Table</h2>
             
-            <!-- FALLBACK TEXT: Displays if train Wi-Fi blocks the script -->
             <div class="absolute inset-0 top-16 flex flex-col items-center justify-center text-center p-6 text-gray-500">
                 <svg class="w-8 h-8 mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                <p class="text-sm">Table unavailable on restricted public Wi-Fi.</p>
-                <p class="text-xs mt-1 text-claret">Switch to mobile data to view.</p>
+                <p class="text-sm">Connection restricted.</p>
             </div>
 
-            <!-- SCOREAXIS WIDGET: Sits on top of the fallback -->
-            <div class="relative z-10 w-full bg-cardbg">
-                <div id="widget-wkfrmupjke5u" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: #1f2937;color: #e5e7eb;border: 1px solid;border-color: #374151;overflow: auto; border-radius: 8px;">
-                <script src="https://widgets.scoreaxis.com/api/football/league-table/62322c24ab744d39ef6504b6?widgetId=wkfrmupjke5u&lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&noFollowLinks=0&font=roboto&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=%231f2937&textColor=%23e5e7eb&linkColor=%23f8a313&borderColor=%23374151&tabColor=%23111827" async></script>
-                <div class="widget-main-link" style="padding: 6px 12px;font-weight: 500; font-size: 11px; text-align: center; border-top: 1px solid #374151;">Live data by <a href="https://www.scoreaxis.com/" target="_blank" style="color: #f8a313;">Scoreaxis</a></div></div>
+            <div class="relative z-10 w-full bg-cardbg rounded-lg overflow-hidden">
+                <!-- Swapped async script for an iframe -->
+                <iframe src="https://widgets.scoreaxis.com/api/football/league-table/62322c24ab744d39ef6504b6?lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&noFollowLinks=0&font=roboto&fontSize=14&rowDensity=100&widgetWidth=100%25&widgetHeight=500&bodyColor=%231f2937&textColor=%23e5e7eb&linkColor=%23f8a313&borderColor=%23374151&tabColor=%23111827" style="width: 100%; height: 500px; border: none;"></iframe>
             </div>
         </div>
 
-        <!-- Right Column: The Community Links -->
+        <!-- Right Column: Links -->
         <div class="bg-cardbg p-5 rounded-xl shadow-lg border border-gray-800">
             <h2 class="text-xl font-bold mb-4 text-white">Community & Content</h2>
             <div class="space-y-4">
@@ -102,19 +95,41 @@
                     <h3 class="font-bold text-white">The City Vent</h3>
                     <p class="text-xs text-gray-400 mt-1">Latest podcast episodes & video reactions.</p>
                 </a>
-                <a href="#" target="_blank" class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition border-l-4 border-gray-500">
-                    <h3 class="font-bold text-white">Bantam Talk</h3>
-                    <p class="text-xs text-gray-400 mt-1">Traditional messageboard discussions.</p>
-                </a>
                 
                 <hr class="border-gray-700 my-6">
 
                 <a href="#" class="block bg-[#5865F2] p-4 rounded-lg hover:bg-[#4752C4] transition text-white text-center font-bold shadow-lg">
-                    Join the Midland Road Discord
+                    Join the Discord
                 </a>
             </div>
         </div>
 
     </main>
+
+    <!-- App Logic: Fetching Live RSS -->
+    <script>
+        // Uses a free RSS-to-JSON converter to pull the WOAP feed
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwidthofapost.com%2Ffeed%2F')
+            .then(response => response.json())
+            .then(data => {
+                const feed = document.getElementById('live-news-feed');
+                feed.innerHTML = ''; 
+                
+                // Render the latest 3 articles
+                data.items.slice(0, 3).forEach(item => {
+                    feed.innerHTML += `
+                        <li class="border-b border-gray-700 pb-3">
+                            <a href="${item.link}" target="_blank" class="hover:text-amber transition font-medium">
+                                ${item.title}
+                            </a>
+                            <span class="text-xs text-gray-400 mt-1 block">Width of a Post • ${item.pubDate.split(' ')[0]}</span>
+                        </li>
+                    `;
+                });
+            })
+            .catch(error => {
+                document.getElementById('live-news-feed').innerHTML = '<li class="text-red-400">Unable to load live feed.</li>';
+            });
+    </script>
 </body>
 </html>
