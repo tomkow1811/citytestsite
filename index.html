@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Midland Road — Independent Bradford City Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&family=Courier+Prime&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        stonebg: '#fcfbf9',
-                        parchment: '#f4f1ea',
-                        bordercolor: '#d6cfc2',
-                        deepclaret: '#6b1d2f',
-                        inkblack: '#1a1a1a'
+                        canvas: '#ffffff',
+                        subtle: '#f8f8f8',
+                        linecolor: '#e5e5e5',
+                        claret: '#6b1d2f',
+                        ink: '#111111'
                     },
                     fontFamily: {
-                        serif: ['Cardo', 'Georgia', 'serif'],
-                        fell: ['"IM Fell English"', 'Georgia', 'serif'],
-                        mono: ['"Courier Prime"', 'Courier', 'monospace']
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
                     }
                 }
             }
@@ -28,134 +27,143 @@
     </script>
     <style>
         body {
-            background-color: #fcfbf9;
-            background-image: radial-gradient(#e5dec9 0.75px, transparent 0.75px);
-            background-size: 16px 16px;
+            background-color: #ffffff;
+            color: #111111;
         }
-        .coat-frame {
-            border: 3px double #1a1a1a;
-            padding: 4px;
-            background: #ffffff;
+        .hairline-grid {
+            border: 1px solid #e5e5e5;
         }
-        .engraved-divider {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, rgba(107, 29, 47, 0), rgba(107, 29, 47, 0.7), rgba(107, 29, 47, 0));
+        .hairline-b {
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .hairline-r {
+            border-right: 1px solid #e5e5e5;
+        }
+        .hover-shift {
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+        .hover-shift:hover {
+            background-color: #f8f8f8;
+            color: #6b1d2f;
         }
     </style>
 </head>
-<body class="text-inkblack font-serif antialiased min-h-screen flex flex-col justify-between selection:bg-deepclaret selection:text-white">
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-claret selection:text-white">
 
-    <!-- Cathedral / Collegiate Header -->
-    <header class="w-full border-b border-bordercolor bg-stonebg/90 backdrop-blur-sm sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 py-6 text-center">
-            <div class="text-[10px] font-mono tracking-[0.25em] text-deepclaret uppercase mb-1">
-              Collegium Independentis • Valley Parade
+    <!-- Header: Pure Swiss / Gill Rationalism -->
+    <header class="w-full hairline-b bg-white sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-baseline">
+            <div>
+                <h1 class="text-xl font-semibold tracking-tight text-ink uppercase">
+                    Midland Road
+                </h1>
+                <p class="text-[11px] font-mono text-gray-400 tracking-wider uppercase mt-0.5">
+                    Independent Bradford City Hub & Directory
+                </p>
             </div>
-            <h1 class="text-4xl md:text-5xl font-fell tracking-tight text-inkblack uppercase">
-                Midland Road
-            </h1>
-            <div class="text-xs font-serif italic text-gray-600 mt-1">
-                The Independent Bradford City Gazette & Register
+            
+            <div class="mt-4 sm:mt-0 text-[11px] font-mono text-gray-500 tracking-tight flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
+                <span>SYSTEM ACTIVE • VALLEY PARADE</span>
             </div>
-            <hr class="engraved-divider my-4 w-48 mx-auto">
         </div>
     </header>
 
-    <!-- Main Manuscript Grid -->
-    <main class="max-w-4xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-12 gap-8 w-full my-auto">
+    <!-- Main Content Layout -->
+    <main class="max-w-5xl mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-12 gap-12 w-full my-auto">
 
-        <!-- Left Column: Insignia & Registry (5 Cols) -->
-        <div class="md:col-span-5 space-y-6 flex flex-col items-center">
+        <!-- Left Column: Historic Insignia & Directories (5 Cols) -->
+        <div class="md:col-span-5 space-y-10">
             
-            <!-- Coat of Arms / Iconography Frame -->
-            <div class="coat-frame shadow-md w-48 h-48 flex flex-col items-center justify-center text-center p-4 bg-white relative">
-                <div class="absolute top-1 left-1 w-2 h-2 border-t border-l border-inkblack"></div>
-                <div class="absolute top-1 right-1 w-2 h-2 border-t border-r border-inkblack"></div>
-                <div class="absolute bottom-1 left-1 w-2 h-2 border-b border-l border-inkblack"></div>
-                <div class="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-inkblack"></div>
-                
-                <!-- Stylized Bantam / Heraldic Rooster SVG -->
-                <svg class="w-16 h-16 text-deepclaret mb-2" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" stroke="#1a1a1a" stroke-width="0.5"/>
-                </svg>
-                <span class="font-fell text-xs uppercase tracking-widest text-inkblack font-bold">Sigillum Civitas</span>
-                <span class="text-[9px] font-mono text-gray-500 mt-1">MMXXVI</span>
+            <!-- Historic Civic Coat of Arms / Monogram Area -->
+            <div class="space-y-4">
+                <div class="w-20 h-20 hairline-grid flex items-center justify-center p-2 bg-subtle">
+                    <!-- Clean SVG representation of the traditional Bradford Boar's Head civic emblem motif -->
+                    <svg class="w-10 h-10 text-claret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xs font-mono uppercase tracking-widest text-gray-400">Insignia</h2>
+                    <p class="text-sm font-medium text-ink mt-0.5">Traditional Bradford Civic Motif</p>
+                </div>
             </div>
 
-            <!-- Official & Collegiate Archives -->
-            <div class="w-full bg-parchment border border-bordercolor p-5 shadow-sm">
-                <h2 class="text-xs font-mono uppercase tracking-widest text-deepclaret font-bold mb-3 text-center border-b border-bordercolor pb-2">
-                    I. Official Register
-                </h2>
-                <ul class="space-y-2 text-sm text-center font-serif">
-                    <li>
-                        <a href="https://www.bradfordcityafc.com/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">The Official Registry</a>
-                    </li>
-                    <li>
-                        <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">The Clothier & Emporium</a>
-                    </li>
-                    <li>
-                        <a href="https://www.bradfordcityafc.com/tickets/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">Admission & Passages</a>
-                    </li>
-                </ul>
+            <!-- Official Channels -->
+            <div class="space-y-3">
+                <h2 class="text-[11px] font-mono uppercase tracking-widest text-gray-400">01 / Official</h2>
+                <div class="hairline-grid divide-y divide-linecolor">
+                    <a href="https://www.bradfordcityafc.com/" target="_blank" class="flex items-center justify-between p-3.5 text-sm font-medium text-ink hover-shift">
+                        <span>Official Club Site</span>
+                        <span class="text-xs font-mono text-gray-400">&nearr;</span>
+                    </a>
+                    <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="flex items-center justify-between p-3.5 text-sm font-medium text-ink hover-shift">
+                        <span>Club Store</span>
+                        <span class="text-xs font-mono text-gray-400">&nearr;</span>
+                    </a>
+                    <a href="https://www.bradfordcityafc.com/tickets/" target="_blank" class="flex items-center justify-between p-3.5 text-sm font-medium text-ink hover-shift">
+                        <span>Match Tickets</span>
+                        <span class="text-xs font-mono text-gray-400">&nearr;</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- Independent Chronicles -->
-            <div class="w-full bg-parchment border border-bordercolor p-5 shadow-sm">
-                <h2 class="text-xs font-mono uppercase tracking-widest text-deepclaret font-bold mb-3 text-center border-b border-bordercolor pb-2">
-                    II. Chronicle & Dispatches
-                </h2>
-                <ul class="space-y-2 text-sm text-center font-serif">
-                    <li>
-                        <a href="https://widthofapost.com/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">Width of a Post</a>
-                    </li>
-                    <li>
-                        <a href="https://bantamtalk.com/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">Bantam Talk Synod</a>
-                    </li>
-                    <li>
-                        <a href="https://www.reddit.com/r/bantams/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">The Reddit Directorate</a>
-                    </li>
-                </ul>
+            <!-- Independent Media -->
+            <div class="space-y-3">
+                <h2 class="text-[11px] font-mono uppercase tracking-widest text-gray-400">02 / Independent</h2>
+                <div class="hairline-grid divide-y divide-linecolor">
+                    <a href="https://widthofapost.com/" target="_blank" class="flex items-center justify-between p-3.5 text-sm font-medium text-ink hover-shift">
+                        <span>Width of a Post</span>
+                        <span class="text-xs font-mono text-gray-400">&nearr;</span>
+                    </a>
+                    <a href="https://bantamtalk.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline bg-darkbg hover-lift group flex items-center justify-between p-3.5 text-sm font-medium text-ink hover-shift" style="border:0;">
+                        <span>Bantam Talk</span>
+                        <span class="text-xs font-mono text-gray-400">&nearr;</span>
+                    </a>
+                    <a href="https://www.reddit.com/r/bantams/" target="_blank" class="flex items-center justify-between p-3.5 text-sm font-medium text-ink hover-shift">
+                        <span>r/bantams</span>
+                        <span class="text-xs font-mono text-gray-400">&nearr;</span>
+                    </a>
+                </div>
             </div>
 
         </div>
 
-        <!-- Right Column: Liturgical Matchday & Chronicles (7 Cols) -->
-        <div class="md:col-span-7 space-y-6">
+        <!-- Right Column: Match Telemetry & Statement (7 Cols) -->
+        <div class="md:col-span-7 space-y-10">
             
-            <!-- Matchday Observance Board -->
-            <div class="bg-parchment border border-bordercolor p-6 shadow-sm relative">
-                <div class="absolute -top-3 left-6 bg-deepclaret text-white px-3 py-0.5 text-[10px] font-mono uppercase tracking-widest">
-                    Next Fixture Liturgy
+            <!-- Matchday Fixture Box -->
+            <div class="hairline-grid p-6 bg-subtle space-y-4">
+                <div class="flex justify-between items-center text-[11px] font-mono text-gray-400 uppercase tracking-widest">
+                    <span>Fixture State</span>
+                    <span class="text-claret font-semibold">League One</span>
                 </div>
                 
-                <div class="mt-2 text-center space-y-3">
-                    <div class="text-xs font-mono text-gray-500 uppercase">EFL League One • Matchday IX</div>
-                    <div class="text-2xl font-fell text-inkblack">
-                        Reading <span class="text-deepclaret font-serif italic text-lg font-normal">versus</span> Bradford City
+                <div class="py-2">
+                    <div class="text-2xl font-semibold tracking-tight text-ink">
+                        Reading <span class="text-gray-400 font-light mx-2">vs</span> Bradford City
                     </div>
-                    <div class="text-xs font-serif italic text-gray-600">
-                        To be contested Saturday, the 3rd of October, 2026 at 15:00 BST
+                    <div class="text-xs font-mono text-gray-500 mt-1">
+                        Saturday, 3rd October 2026 — 15:00 BST (Away)
                     </div>
-                    <div class="pt-3 border-t border-bordercolor flex justify-center gap-6 text-xs font-mono text-gray-700">
-                        <span>POSITION: 1ST IN LEAGUE</span>
-                        <span>•</span>
-                        <a href="https://www.sofascore.com/football/tournament/england/league-one/24#id:97077" target="_blank" class="text-deepclaret hover:underline">View Standings Scroll &rarr;</a>
-                    </div>
+                </div>
+
+                <div class="pt-4 hairline-b"></div>
+
+                <div class="flex justify-between items-center text-xs font-mono">
+                    <span class="text-gray-600">Current Standing: 1st Place</span>
+                    <a href="https://www.sofascore.com/football/tournament/england/league-one/24#id:97077" target="_blank" class="text-claret font-medium hover:underline">View Matrix &rarr;</a>
                 </div>
             </div>
 
-            <!-- Cathedral Epistle / Editorial Note -->
-            <div class="bg-white border-2 border-bordercolor p-6 shadow-sm relative">
-                <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest mb-2 text-center">
-                  Notice to the Parishioners
-                </div>
-                <blockquote class="text-center font-serif italic text-gray-800 leading-relaxed text-sm md:text-base px-4">
-                    "Built upon stone and immutable static architecture. Devoid of algorithmic heresy, corporate widgetry, and modern commercial pollution. Pure devotion to Valley Parade."
-                </blockquote>
-                <div class="mt-4 text-center text-xs font-mono text-deepclaret tracking-widest uppercase font-bold">
-                    — Scriptorium of Midland Road
+            <!-- Architectural Statement / Manifesto -->
+            <div class="p-6 hairline-grid space-y-3">
+                <h2 class="text-[11px] font-mono uppercase tracking-widest text-gray-400">Design Intent</h2>
+                <p class="text-sm leading-relaxed text-gray-700 font-normal">
+                    Designed with uncompromising editorial clarity. Zero corporate widgets, zero algorithmic tracking, and absolute structural integrity. A clean conduit for Valley Parade intelligence.
+                </p>
+                <div class="text-[11px] font-mono text-claret pt-2 uppercase tracking-wider font-semibold">
+                    — Midland Road Archives
                 </div>
             </div>
 
@@ -163,11 +171,11 @@
 
     </main>
 
-    <!-- Collegiate Footer -->
-    <footer class="w-full border-t border-bordercolor bg-stonebg py-6 mt-12 text-center">
-        <div class="max-w-4xl mx-auto px-6 text-xs font-mono text-gray-500 space-y-1">
-            <p>EST. MMXXVI • SANCTUARY OF BRADFORD CITY FOOTBALL CLUB</p>
-            <p class="text-[10px] text-gray-400">PUBLISHED VIA SECURE GITHUB RELAYS • ALL RIGHTS RESERVED</p>
+    <!-- Minimalist Footer -->
+    <footer class="w-full hairline-t bg-white py-8">
+        <div class="max-w-5xl mx-auto px-8 flex flex-col sm:flex-row justify-between items-center text-[11px] font-mono text-gray-400">
+            <p>MIDLAND ROAD // STATIC INDEPENDENT INFRASTRUCTURE</p>
+            <p class="mt-2 sm:mt-0">EST. 2026</p>
         </div>
     </footer>
 
