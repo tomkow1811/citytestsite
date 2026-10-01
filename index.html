@@ -3,188 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIDLAND.ROAD // Independent Bradford City Hub</title>
+    <title>Midland Road — Independent Bradford City Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&family=Courier+Prime&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        claret: '#581c2f',
-                        claretBright: '#83223f',
-                        amber: '#f59e0b',
-                        darkbg: '#050507', 
-                        cardbg: '#0c0d10',
-                        borderline: '#1c1f26'
+                        stonebg: '#fcfbf9',
+                        parchment: '#f4f1ea',
+                        bordercolor: '#d6cfc2',
+                        deepclaret: '#6b1d2f',
+                        inkblack: '#1a1a1a'
                     },
                     fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
+                        serif: ['Cardo', 'Georgia', 'serif'],
+                        fell: ['"IM Fell English"', 'Georgia', 'serif'],
+                        mono: ['"Courier Prime"', 'Courier', 'monospace']
                     }
                 }
             }
         }
     </script>
     <style>
-        .custom-scrollbar::-webkit-scrollbar { width: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #22252a; }
-        .terminal-glow {
-            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.07);
+        body {
+            background-color: #fcfbf9;
+            background-image: radial-gradient(#e5dec9 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
         }
-        .hover-lift {
-            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease, background-color 0.15s ease;
+        .coat-frame {
+            border: 3px double #1a1a1a;
+            padding: 4px;
+            background: #ffffff;
         }
-        .hover-lift:hover {
-            transform: translateY(-2px);
-            border-color: rgba(245, 158, 11, 0.4);
-            background-color: rgba(245, 158, 11, 0.02);
+        .engraved-divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, rgba(107, 29, 47, 0), rgba(107, 29, 47, 0.7), rgba(107, 29, 47, 0));
         }
     </style>
 </head>
-<body class="bg-darkbg text-gray-300 font-sans antialiased min-h-screen selection:bg-amber selection:text-black">
+<body class="text-inkblack font-serif antialiased min-h-screen flex flex-col justify-between selection:bg-deepclaret selection:text-white">
 
-    <!-- Web3/Terminal Top Telemetry Bar -->
-    <div class="bg-black border-b border-borderline py-1.5 px-6 text-[10px] font-mono text-gray-500 flex justify-between items-center overflow-x-auto whitespace-nowrap">
-        <div class="flex items-center gap-4">
-            <span class="text-amber flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-amber rounded-full animate-ping"></span> NODE: VALLEY_PARADE_01</span>
-            <span>LATENCY: 14MS</span>
-            <span>PROTOCOL: STATIC_IPFS_READY</span>
-        </div>
-        <div class="flex items-center gap-4">
-            <span class="text-gray-400">LEAGUE ONE: 1ST [15 PTS / 7 GP]</span>
-        </div>
-    </div>
-
-    <!-- Main Navigation Header -->
-    <header class="border-b border-borderline bg-darkbg/90 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-                <h1 class="text-2xl font-bold tracking-tighter text-white uppercase flex items-center gap-2">
-                    MIDLAND<span class="text-amber">.</span>ROAD
-                    <span class="text-[10px] font-mono px-2 py-0.5 bg-claret/40 text-amber border border-claret">v2.6</span>
-                </h1>
-                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest mt-0.5">Independent Bradford City Hub</p>
+    <!-- Cathedral / Collegiate Header -->
+    <header class="w-full border-b border-bordercolor bg-stonebg/90 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center">
+            <div class="text-[10px] font-mono tracking-[0.25em] text-deepclaret uppercase mb-1">
+              Collegium Independentis • Valley Parade
             </div>
-            
-            <div class="flex items-center gap-3 text-xs font-mono text-gray-400 border border-borderline px-4 py-2 bg-cardbg terminal-glow">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                <span>MATCHDAY LOCK: <strong class="text-white">READING (A)</strong></span>
+            <h1 class="text-4xl md:text-5xl font-fell tracking-tight text-inkblack uppercase">
+                Midland Road
+            </h1>
+            <div class="text-xs font-serif italic text-gray-600 mt-1">
+                The Independent Bradford City Gazette & Register
             </div>
+            <hr class="engraved-divider my-4 w-48 mx-auto">
         </div>
     </header>
 
-    <!-- Asymmetric Web3 Bento Grid -->
-    <main class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-12 gap-6">
+    <!-- Main Manuscript Grid -->
+    <main class="max-w-4xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-12 gap-8 w-full my-auto">
 
-        <!-- Column 1: Core Navigation (4 Cols) -->
-        <div class="md:col-span-4 space-y-6">
+        <!-- Left Column: Insignia & Registry (5 Cols) -->
+        <div class="md:col-span-5 space-y-6 flex flex-col items-center">
             
-            <!-- Official Channels -->
-            <div class="bg-cardbg border border-borderline p-5 shadow-xl">
-                <h2 class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3 flex items-center justify-between">
-                    <span>01 // Official State</span>
-                    <span class="text-amber">&bull;</span>
-                </h2>
-                <div class="space-y-2">
-                    <a href="https://www.bradfordcityafc.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline bg-darkbg hover-lift group">
-                        <span class="text-xs font-mono font-medium text-white group-hover:text-amber">AFC.OFFICIAL</span>
-                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
-                    </a>
-                    <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="flex items-center justify-between p-3 border border-borderline bg-darkbg hover-lift group">
-                        <span class="text-xs font-mono font-medium text-white group-hover:text-amber">CLUB.STORE</span>
-                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
-                    </a>
-                    <a href="https://www.bradfordcityafc.com/tickets/" target="_blank" class="flex items-center justify-between p-3 border border-borderline bg-darkbg hover-lift group">
-                        <span class="text-xs font-mono font-medium text-white group-hover:text-amber">TICKETING.SYS</span>
-                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
-                    </a>
-                </div>
+            <!-- Coat of Arms / Iconography Frame -->
+            <div class="coat-frame shadow-md w-48 h-48 flex flex-col items-center justify-center text-center p-4 bg-white relative">
+                <div class="absolute top-1 left-1 w-2 h-2 border-t border-l border-inkblack"></div>
+                <div class="absolute top-1 right-1 w-2 h-2 border-t border-r border-inkblack"></div>
+                <div class="absolute bottom-1 left-1 w-2 h-2 border-b border-l border-inkblack"></div>
+                <div class="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-inkblack"></div>
+                
+                <!-- Stylized Bantam / Heraldic Rooster SVG -->
+                <svg class="w-16 h-16 text-deepclaret mb-2" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" stroke="#1a1a1a" stroke-width="0.5"/>
+                </svg>
+                <span class="font-fell text-xs uppercase tracking-widest text-inkblack font-bold">Sigillum Civitas</span>
+                <span class="text-[9px] font-mono text-gray-500 mt-1">MMXXVI</span>
             </div>
 
-            <!-- Independent Media & Forums -->
-            <div class="bg-cardbg border border-borderline p-5 shadow-xl">
-                <h2 class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3 flex items-center justify-between">
-                    <span>02 // Decentralized Fanzines</span>
-                    <span class="text-amber">&bull;</span>
+            <!-- Official & Collegiate Archives -->
+            <div class="w-full bg-parchment border border-bordercolor p-5 shadow-sm">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-deepclaret font-bold mb-3 text-center border-b border-bordercolor pb-2">
+                    I. Official Register
                 </h2>
-                <div class="space-y-2">
-                    <a href="https://widthofapost.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline bg-darkbg hover-lift group">
-                        <span class="text-xs font-mono font-medium text-white group-hover:text-amber">WIDTH.OF.A.POST</span>
-                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
-                    </a>
-                    <a href="https://bantamtalk.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline bg-darkbg hover-lift group">
-                        <span class="text-xs font-mono font-medium text-white group-hover:text-amber">BANTAM.TALK</span>
-                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
-                    </a>
-                    <a href="https://www.reddit.com/r/bantams/" target="_blank" class="flex items-center justify-between p-3 border border-borderline bg-darkbg hover-lift group">
-                        <span class="text-xs font-mono font-medium text-white group-hover:text-amber">R/BANTAMS</span>
-                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
-                    </a>
-                </div>
+                <ul class="space-y-2 text-sm text-center font-serif">
+                    <li>
+                        <a href="https://www.bradfordcityafc.com/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">The Official Registry</a>
+                    </li>
+                    <li>
+                        <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">The Clothier & Emporium</a>
+                    </li>
+                    <li>
+                        <a href="https://www.bradfordcityafc.com/tickets/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">Admission & Passages</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Independent Chronicles -->
+            <div class="w-full bg-parchment border border-bordercolor p-5 shadow-sm">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-deepclaret font-bold mb-3 text-center border-b border-bordercolor pb-2">
+                    II. Chronicle & Dispatches
+                </h2>
+                <ul class="space-y-2 text-sm text-center font-serif">
+                    <li>
+                        <a href="https://widthofapost.com/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">Width of a Post</a>
+                    </li>
+                    <li>
+                        <a href="https://bantamtalk.com/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">Bantam Talk Synod</a>
+                    </li>
+                    <li>
+                        <a href="https://www.reddit.com/r/bantams/" target="_blank" class="hover:text-deepclaret underline decoration-dotted underline-offset-4">The Reddit Directorate</a>
+                    </li>
+                </ul>
             </div>
 
         </div>
 
-        <!-- Column 2: Live Match State & Telemetry (8 Cols) -->
-        <div class="md:col-span-8 space-y-6">
+        <!-- Right Column: Liturgical Matchday & Chronicles (7 Cols) -->
+        <div class="md:col-span-7 space-y-6">
             
-            <!-- Live Telemetry Card -->
-            <div class="bg-cardbg border border-borderline p-6 shadow-xl relative overflow-hidden terminal-glow">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-amber/5 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">03 // Matchday Telemetry</h2>
-                    <span class="text-[10px] font-mono px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">MATCH PENDING</span>
+            <!-- Matchday Observance Board -->
+            <div class="bg-parchment border border-bordercolor p-6 shadow-sm relative">
+                <div class="absolute -top-3 left-6 bg-deepclaret text-white px-3 py-0.5 text-[10px] font-mono uppercase tracking-widest">
+                    Next Fixture Liturgy
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="bg-darkbg border border-borderline p-4 text-center">
-                        <div class="text-[10px] font-mono text-gray-500 uppercase">Opponent</div>
-                        <div class="text-lg font-bold text-white mt-1">Reading (A)</div>
-                        <div class="text-[10px] font-mono text-amber mt-1">Sat 3 Oct • 15:00</div>
+                <div class="mt-2 text-center space-y-3">
+                    <div class="text-xs font-mono text-gray-500 uppercase">EFL League One • Matchday IX</div>
+                    <div class="text-2xl font-fell text-inkblack">
+                        Reading <span class="text-deepclaret font-serif italic text-lg font-normal">versus</span> Bradford City
                     </div>
-                    <div class="bg-darkbg border border-borderline p-4 text-center">
-                        <div class="text-[10px] font-mono text-gray-500 uppercase">League Position</div>
-                        <div class="text-lg font-bold text-amber mt-1">1st Place</div>
-                        <div class="text-[10px] font-mono text-gray-400 mt-1">15 Points / +3 GD</div>
+                    <div class="text-xs font-serif italic text-gray-600">
+                        To be contested Saturday, the 3rd of October, 2026 at 15:00 BST
                     </div>
-                    <div class="bg-darkbg border border-borderline p-4 text-center">
-                        <div class="text-[10px] font-mono text-gray-500 uppercase">Form Guide</div>
-                        <div class="flex justify-center gap-1 mt-2">
-                            <span class="w-5 h-5 bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center rounded">W</span>
-                            <span class="w-5 h-5 bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center rounded">W</span>
-                            <span class="w-5 h-5 bg-amber/20 text-amber text-xs font-bold flex items-center justify-center rounded">D</span>
-                            <span class="w-5 h-5 bg-rose-500/20 text-rose-400 text-xs font-bold flex items-center justify-center rounded">L</span>
-                            <span class="w-5 h-5 bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center rounded">W</span>
-                        </div>
-                        <div class="text-[10px] font-mono text-gray-500 mt-1.5">Last 5</div>
+                    <div class="pt-3 border-t border-bordercolor flex justify-center gap-6 text-xs font-mono text-gray-700">
+                        <span>POSITION: 1ST IN LEAGUE</span>
+                        <span>•</span>
+                        <a href="https://www.sofascore.com/football/tournament/england/league-one/24#id:97077" target="_blank" class="text-deepclaret hover:underline">View Standings Scroll &rarr;</a>
                     </div>
-                </div>
-
-                <div class="mt-4 pt-4 border-t border-borderline flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-gray-400 gap-2">
-                    <span>STATUS: PRE-MATCH BUILDUP ACTIVE</span>
-                    <a href="https://www.sofascore.com/football/tournament/england/league-one/24#id:97077" target="_blank" class="text-amber hover:underline">&rarr; Full Standings Matrix</a>
                 </div>
             </div>
 
-            <!-- Terminal Manifesto Block -->
-            <div class="bg-cardbg border border-borderline p-6 flex flex-col justify-between">
-                <div class="font-mono text-xs text-gray-400 space-y-2">
-                    <p class="text-amber">&gt; SYSTEM INTENT:</p>
-                    <p class="leading-relaxed text-gray-300">
-                        "Independent fan infrastructure built on immutable static routing. No corporate widgets, no tracking cookies, zero clutter—pure City intelligence."
-                    </p>
+            <!-- Cathedral Epistle / Editorial Note -->
+            <div class="bg-white border-2 border-bordercolor p-6 shadow-sm relative">
+                <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest mb-2 text-center">
+                  Notice to the Parishioners
                 </div>
-                <div class="mt-6 pt-4 border-t border-borderline flex justify-between items-center text-[10px] font-mono text-gray-600">
-                    <span>HOSTED VIA GITHUB PAGES</span>
-                    <span>MIDLAND.ROAD © 2026</span>
+                <blockquote class="text-center font-serif italic text-gray-800 leading-relaxed text-sm md:text-base px-4">
+                    "Built upon stone and immutable static architecture. Devoid of algorithmic heresy, corporate widgetry, and modern commercial pollution. Pure devotion to Valley Parade."
+                </blockquote>
+                <div class="mt-4 text-center text-xs font-mono text-deepclaret tracking-widest uppercase font-bold">
+                    — Scriptorium of Midland Road
                 </div>
             </div>
 
         </div>
 
     </main>
+
+    <!-- Collegiate Footer -->
+    <footer class="w-full border-t border-bordercolor bg-stonebg py-6 mt-12 text-center">
+        <div class="max-w-4xl mx-auto px-6 text-xs font-mono text-gray-500 space-y-1">
+            <p>EST. MMXXVI • SANCTUARY OF BRADFORD CITY FOOTBALL CLUB</p>
+            <p class="text-[10px] text-gray-400">PUBLISHED VIA SECURE GITHUB RELAYS • ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
 
 </body>
 </html>
