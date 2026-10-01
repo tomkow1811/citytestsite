@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Midland Road | The Bradford City Hub</title>
-    <!-- Tailwind CSS -->
+    <title>Midland Road | Bradford City</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         claret: '#7a2346',
-                        claretDark: '#561630',
                         amber: '#f8a313',
-                        amberLight: '#ffbd45',
-                        darkbg: '#0B0F19', // Deeper, richer background
-                        cardbg: 'rgba(30, 41, 59, 0.7)' // Translucent for glass effect
+                        darkbg: '#050505', 
+                        cardbg: '#0f0f0f',
+                        borderline: '#262626'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.4s ease-out forwards',
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
                         }
                     }
                 }
@@ -32,109 +35,122 @@
         }
     </script>
     <style>
-        /* Custom scrollbar for the news feed */
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #7a2346; border-radius: 4px; }
-        .glass-panel { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        /* Ultra-sharp minimal scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #262626; }
+        .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: #f8a313; }
+        
+        /* Ensures the iframe sits perfectly inside the sharp borders */
+        iframe { display: block; }
     </style>
 </head>
-<body class="bg-darkbg text-gray-200 font-sans min-h-screen selection:bg-amber selection:text-black" style="background-image: radial-gradient(circle at top right, rgba(122, 35, 70, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba(248, 163, 19, 0.1), transparent 40%);">
+<body class="bg-darkbg text-gray-300 font-sans selection:bg-amber selection:text-black antialiased min-h-screen">
 
-    <!-- Sticky Glass Header -->
-    <header class="sticky top-0 z-50 glass-panel bg-darkbg/80 border-b border-white/10 mb-8 shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-claret to-amber flex items-center justify-center shadow-lg shadow-amber/20">
-                    <span class="font-bold text-white tracking-tighter">MR</span>
+    <!-- Minimalist Editorial Header -->
+    <header class="border-b border-borderline bg-darkbg/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-8 h-8 bg-claret flex items-center justify-center">
+                    <span class="font-bold text-white text-xs tracking-tighter">MR</span>
                 </div>
-                <h1 class="text-3xl font-black tracking-tight text-white">MIDLAND<span class="text-transparent bg-clip-text bg-gradient-to-r from-amber to-amberLight">ROAD</span></h1>
+                <h1 class="text-2xl font-black tracking-tight text-white uppercase">Midland<span class="text-amber">Road</span></h1>
             </div>
-            <div class="mt-4 md:mt-0 flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10 text-sm shadow-inner">
-                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                <span>Next Match: <strong class="text-white">Reading (A)</strong></span>
+            <div class="mt-4 md:mt-0 flex items-center gap-3">
+                <div class="flex items-center gap-2 text-xs font-mono text-gray-400 border border-borderline px-3 py-1.5 bg-cardbg">
+                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                    SYS.LIVE
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-6 pb-12">
+    <main class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-        <!-- LEFT COLUMN: Essential Links (Replaced Odds) -->
-        <div class="lg:col-span-3 space-y-6 animate-fade-in">
+        <!-- LEFT COLUMN: Segmented Directories -->
+        <div class="lg:col-span-3 space-y-6 opacity-0 animate-fade-in">
             
-            <div class="glass-panel bg-cardbg p-5 rounded-2xl border border-white/10 shadow-xl">
-                <h2 class="text-lg font-bold mb-4 text-white flex items-center gap-2">
-                    <svg class="w-5 h-5 text-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    Club Hub
-                </h2>
-                <div class="grid grid-cols-2 gap-3">
-                    <a href="https://www.bradfordcityafc.com/" target="_blank" class="flex flex-col items-center justify-center p-3 bg-white/5 rounded-xl border border-white/5 hover:border-amber/50 hover:bg-amber/10 hover:-translate-y-1 transition-all duration-200 group">
-                        <span class="text-xs font-semibold text-gray-300 group-hover:text-amber">Official Site</span>
+            <!-- Official Directory -->
+            <div class="bg-cardbg border border-borderline p-5">
+                <h2 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Official</h2>
+                <div class="grid grid-cols-1 gap-2">
+                    <a href="https://www.bradfordcityafc.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline hover:border-amber hover:text-amber transition-colors group bg-darkbg">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-amber">Official Site</span>
+                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
                     </a>
-                    <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="flex flex-col items-center justify-center p-3 bg-white/5 rounded-xl border border-white/5 hover:border-amber/50 hover:bg-amber/10 hover:-translate-y-1 transition-all duration-200 group">
-                        <span class="text-xs font-semibold text-gray-300 group-hover:text-amber">Club Shop</span>
+                    <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="flex items-center justify-between p-3 border border-borderline hover:border-amber hover:text-amber transition-colors group bg-darkbg">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-amber">Club Shop</span>
+                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
                     </a>
-                    <a href="https://www.bradfordcityafc.com/tickets" target="_blank" class="flex flex-col items-center justify-center p-3 bg-white/5 rounded-xl border border-white/5 hover:border-amber/50 hover:bg-amber/10 hover:-translate-y-1 transition-all duration-200 group">
-                        <span class="text-xs font-semibold text-gray-300 group-hover:text-amber">Tickets</span>
-                    </a>
-                    <a href="https://bantamtalk.com/" target="_blank" class="flex flex-col items-center justify-center p-3 bg-white/5 rounded-xl border border-white/5 hover:border-amber/50 hover:bg-amber/10 hover:-translate-y-1 transition-all duration-200 group">
-                        <span class="text-xs font-semibold text-gray-300 group-hover:text-amber">Bantam Talk</span>
+                    <a href="https://www.bradfordcityafc.com/tickets/" target="_blank" class="flex items-center justify-between p-3 border border-borderline hover:border-amber hover:text-amber transition-colors group bg-darkbg">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-amber">Tickets</span>
+                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Discord Promo -->
-            <a href="#" class="relative block glass-panel bg-gradient-to-br from-[#5865F2]/20 to-[#5865F2]/5 p-6 rounded-2xl border border-[#5865F2]/30 shadow-xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 group">
-                <div class="absolute inset-0 bg-[#5865F2] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <h3 class="font-bold text-white text-lg relative z-10">Join the Conversation</h3>
-                <p class="text-sm text-[#5865F2] mt-1 relative z-10 font-semibold">Midland Road Discord &rarr;</p>
+            <!-- Community Directory -->
+            <div class="bg-cardbg border border-borderline p-5">
+                <h2 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Community</h2>
+                <div class="grid grid-cols-1 gap-2">
+                    <a href="https://widthofapost.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline hover:border-amber hover:text-amber transition-colors group bg-darkbg">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-amber">Width of a Post</span>
+                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
+                    </a>
+                    <a href="https://bantamtalk.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline hover:border-amber hover:text-amber transition-colors group bg-darkbg">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-amber">Bantam Talk</span>
+                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
+                    </a>
+                    <a href="https://www.reddit.com/r/bantams/" target="_blank" class="flex items-center justify-between p-3 border border-borderline hover:border-amber hover:text-amber transition-colors group bg-darkbg">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-amber">r/bantams</span>
+                        <span class="text-xs font-mono text-gray-600 group-hover:text-amber">&nearr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Brutalist Discord Promo -->
+            <a href="#" class="block bg-amber p-5 border border-amber hover:bg-transparent hover:text-amber transition-colors group">
+                <h3 class="font-black text-black group-hover:text-amber text-lg uppercase tracking-tight">Join Discord</h3>
+                <p class="text-sm text-black/80 group-hover:text-amber/80 mt-1">Live match chat & community</p>
             </a>
 
         </div>
 
-        <!-- MIDDLE COLUMN: The Super-Feed Aggregator -->
-        <div class="lg:col-span-5 glass-panel bg-cardbg rounded-2xl border border-white/10 shadow-xl overflow-hidden flex flex-col h-[600px] animate-fade-in" style="animation-delay: 0.1s;">
-            <div class="p-5 border-b border-white/10 bg-black/20 flex justify-between items-center">
-                <h2 class="text-lg font-bold text-white">The Pulse</h2>
-                <span class="text-[10px] uppercase tracking-wider bg-amber/20 text-amber px-2 py-1 rounded font-bold border border-amber/30">Auto-Updating</span>
+        <!-- MIDDLE COLUMN: The Multi-Source Aggregator -->
+        <div class="lg:col-span-5 bg-cardbg border border-borderline flex flex-col h-[600px] opacity-0 animate-fade-in" style="animation-delay: 0.1s;">
+            <div class="p-4 border-b border-borderline flex justify-between items-center bg-darkbg">
+                <h2 class="text-xs font-mono text-gray-500 uppercase tracking-widest">Aggregated Feed</h2>
+                <span class="text-[10px] font-mono text-amber border border-amber/30 px-1.5 py-0.5 bg-amber/10">SYNCING</span>
             </div>
             
-            <!-- News Feed Container -->
-            <div id="live-news-feed" class="p-5 overflow-y-auto custom-scrollbar flex-1 space-y-4">
+            <div id="live-news-feed" class="overflow-y-auto custom-scrollbar flex-1">
                 <!-- Loading State -->
-                <div class="flex flex-col space-y-4 animate-pulse">
-                    <div class="h-20 bg-white/5 rounded-xl"></div>
-                    <div class="h-20 bg-white/5 rounded-xl"></div>
-                    <div class="h-20 bg-white/5 rounded-xl"></div>
+                <div class="p-6 flex flex-col space-y-6 animate-pulse">
+                    <div class="h-4 bg-borderline w-3/4"></div>
+                    <div class="h-4 bg-borderline w-1/2"></div>
+                    <div class="h-4 bg-borderline w-5/6 mt-8"></div>
                 </div>
             </div>
         </div>
 
-        <!-- RIGHT COLUMN: Live Table (Iframe) -->
-        <div class="lg:col-span-4 glass-panel bg-cardbg rounded-2xl border-t-4 border-t-claret shadow-xl overflow-hidden relative min-h-[500px] animate-fade-in" style="animation-delay: 0.2s;">
-            <div class="p-5 pb-0">
-                <h2 class="text-lg font-bold text-white mb-2">Live League Two</h2>
-            </div>
-            
-            <!-- Fallback -->
-            <div class="absolute inset-0 top-16 flex flex-col items-center justify-center text-center p-6 text-gray-500 -z-10">
-                <p class="text-sm">Table loading or blocked by network.</p>
+        <!-- RIGHT COLUMN: Live Table -->
+        <div class="lg:col-span-4 bg-cardbg border border-borderline h-[600px] opacity-0 animate-fade-in" style="animation-delay: 0.2s;">
+            <div class="p-4 border-b border-borderline bg-darkbg">
+                <h2 class="text-xs font-mono text-gray-500 uppercase tracking-widest">League Two Table</h2>
             </div>
 
             <!-- ScoreAxis Iframe -->
-            <div class="w-full h-[520px] px-2 pb-2">
-                <iframe src="https://widgets.scoreaxis.com/api/football/league-table/62322c24ab744d39ef6504b6?lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&noFollowLinks=0&font=roboto&fontSize=13&rowDensity=100&widgetWidth=100%25&widgetHeight=100%25&bodyColor=transparent&textColor=%23e5e7eb&linkColor=%23f8a313&borderColor=%23374151&tabColor=transparent" style="width: 100%; height: 100%; border: none;"></iframe>
+            <div class="w-full h-[546px]">
+                <iframe src="https://widgets.scoreaxis.com/api/football/league-table/62322c24ab744d39ef6504b6?lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&noFollowLinks=0&font=inter&fontSize=13&rowDensity=100&widgetWidth=100%25&widgetHeight=100%25&bodyColor=transparent&textColor=%23d4d4d4&linkColor=%23f8a313&borderColor=%23262626&tabColor=transparent" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
         </div>
 
     </main>
 
-    <!-- App Logic: The Aggregator Engine -->
+    <!-- App Logic: T&A and WOAP RSS Aggregator -->
     <script>
-        // RSS Feeds to pull
         const woapFeed = 'https://widthofapost.com/feed/';
-        const googleNewsFeed = 'https://news.google.com/rss/search?q=%22Bradford+City%22+football+when:7d&hl=en-GB&gl=GB&ceid=GB:en';
-        const apiKey = 'YOUR_RSS2JSON_API_KEY_OPTIONAL'; // Works without key for low traffic
+        const taFeed = 'https://www.thetelegraphandargus.co.uk/sport/sportbcfc/?ref=rss';
         
         const fetchFeed = (url, sourceName, colorClass) => {
             return fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`)
@@ -144,8 +160,7 @@
                         return data.items.map(item => ({
                             ...item,
                             source: sourceName,
-                            color: colorClass,
-                            // Ensure date is a valid object for sorting
+                            badgeColor: colorClass,
                             timestamp: new Date(item.pubDate.replace(/-/g, '/')).getTime() 
                         }));
                     }
@@ -153,40 +168,35 @@
                 }).catch(() => []);
         };
 
-        // Fetch both feeds simultaneously
         Promise.all([
-            fetchFeed(woapFeed, 'WOAP', 'text-amber bg-amber/10 border-amber/20'),
-            fetchFeed(googleNewsFeed, 'News Desk', 'text-blue-400 bg-blue-400/10 border-blue-400/20')
+            fetchFeed(woapFeed, 'WOAP', 'text-amber border-amber/30 bg-amber/10'),
+            fetchFeed(taFeed, 'T&A', 'text-gray-300 border-gray-600 bg-gray-800')
         ]).then(results => {
-            // Combine arrays and sort by newest first
             const combinedFeed = [...results[0], ...results[1]].sort((a, b) => b.timestamp - a.timestamp);
             const feedContainer = document.getElementById('live-news-feed');
             
-            feedContainer.innerHTML = ''; // Clear loading skeleton
+            feedContainer.innerHTML = ''; 
 
             if (combinedFeed.length === 0) {
-                feedContainer.innerHTML = '<p class="text-gray-500 text-center mt-10">No recent news found.</p>';
+                feedContainer.innerHTML = '<div class="p-6 font-mono text-sm text-gray-500">NO DATA FOUND.</div>';
                 return;
             }
 
-            // Render the sorted cards
             combinedFeed.forEach(item => {
-                // Clean up Google News titles (removes the " - Publisher" bit at the end)
-                let cleanTitle = item.title.split(' - ')[0];
-                
-                // Format relative time (e.g., "2 hours ago")
                 const timeDiff = Math.round((new Date() - item.timestamp) / (1000 * 60));
-                let timeString = timeDiff < 60 ? `${timeDiff}m ago` : 
-                                 timeDiff < 1440 ? `${Math.floor(timeDiff/60)}h ago` : 
-                                 `${Math.floor(timeDiff/1440)}d ago`;
+                let timeString = timeDiff < 60 ? `${timeDiff}M AGO` : 
+                                 timeDiff < 1440 ? `${Math.floor(timeDiff/60)}H AGO` : 
+                                 `${Math.floor(timeDiff/1440)}D AGO`;
 
                 feedContainer.innerHTML += `
-                    <a href="${item.link}" target="_blank" class="block p-4 bg-white/5 rounded-xl border border-white/5 hover:border-amber/50 hover:bg-white/10 transition-all duration-200 group">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-[10px] font-bold px-2 py-0.5 rounded border ${item.color}">${item.source}</span>
-                            <span class="text-xs text-gray-500">${timeString}</span>
+                    <a href="${item.link}" target="_blank" class="block p-5 border-b border-borderline hover:bg-borderline/30 transition-colors group">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-[9px] font-mono uppercase tracking-widest px-1.5 py-0.5 border ${item.badgeColor}">${item.source}</span>
+                            <span class="text-[10px] font-mono text-gray-500">${timeString}</span>
                         </div>
-                        <h3 class="font-semibold text-gray-200 group-hover:text-amber transition-colors line-clamp-2 leading-snug">${cleanTitle}</h3>
+                        <h3 class="text-sm font-semibold text-gray-200 group-hover:text-amber transition-colors leading-relaxed pr-4">
+                            ${item.title}
+                        </h3>
                     </a>
                 `;
             });
