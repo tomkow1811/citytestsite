@@ -12,51 +12,78 @@
                 extend: {
                     colors: {
                         claret: '#7a2346',
+                        claretDark: '#50162e',
                         amber: '#f8a313',
-                        darkbg: '#0f172a', 
-                        cardbg: '#1e293b',
-                        borderline: '#334155'
+                        amberGlow: '#ffb732',
+                        darkbg: '#090d16', 
+                        cardbg: '#131b2e',
+                        borderline: '#1e293b'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.4s ease-out forwards',
-                    },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
+                            '0%': { opacity: '0', transform: 'translateY(6px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.4' },
                         }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-slow': 'pulseGlow 3s infinite ease-in-out',
                     }
                 }
             }
         }
     </script>
     <style>
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #f8a313; }
-        iframe { display: block; }
+        
+        /* Smooth card hover lift */
+        .hover-lift {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(248, 163, 19, 0.15);
+            border-color: rgba(248, 163, 19, 0.4);
+        }
     </style>
 </head>
 <body class="bg-darkbg text-gray-200 font-sans selection:bg-amber selection:text-black antialiased min-h-screen">
 
-    <!-- Header -->
-    <header class="border-b border-borderline bg-darkbg/90 backdrop-blur-md sticky top-0 z-50 shadow-lg">
+    <!-- Sticky Header with Animated Status -->
+    <header class="border-b border-borderline bg-darkbg/85 backdrop-blur-xl sticky top-0 z-50 shadow-2xl">
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-claret rounded-lg flex items-center justify-center shadow-md">
-                    <span class="font-bold text-white text-xs tracking-tighter">MR</span>
+            
+            <!-- Brand Logo (Replaced MR with a striking Bantam Crest motif) -->
+            <div class="flex items-center gap-3.5 group cursor-default">
+                <div class="w-10 h-10 bg-gradient-to-br from-claret to-claretDark rounded-xl flex items-center justify-center shadow-lg shadow-claret/30 border border-amber/20 group-hover:scale-105 transition-transform">
+                    <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
                 </div>
-                <h1 class="text-2xl font-black tracking-tight text-white uppercase">Midland<span class="text-amber">Road</span></h1>
+                <div>
+                    <h1 class="text-2xl font-black tracking-tight text-white uppercase flex items-center gap-1.5">
+                        Midland<span class="text-amber">Road</span>
+                    </h1>
+                    <p class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">Bradford City Intelligence Hub</p>
+                </div>
             </div>
+
+            <!-- Live Status Pill -->
             <div class="mt-4 md:mt-0 flex items-center gap-3">
-                <div class="flex items-center gap-2 text-xs font-mono text-gray-300 border border-borderline px-3 py-1.5 rounded-lg bg-cardbg shadow-inner">
-                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                    SYS.LIVE
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300 border border-borderline px-4 py-2 rounded-xl bg-cardbg/80 shadow-inner">
+                    <span class="w-2.5 h-2.5 bg-amber rounded-full animate-pulse-slow shadow-lg shadow-amber"></span>
+                    <span class="tracking-wide">MATCHDAY FEED: <strong class="text-white">ACTIVE</strong></span>
                 </div>
             </div>
         </div>
@@ -64,23 +91,25 @@
 
     <main class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-        <!-- LEFT COLUMN: Directories -->
+        <!-- LEFT COLUMN: Quick Access Directories -->
         <div class="lg:col-span-3 space-y-6 opacity-0 animate-fade-in">
             
             <!-- Official -->
             <div class="bg-cardbg border border-borderline rounded-2xl p-5 shadow-xl">
-                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest mb-4">Official</h2>
-                <div class="grid grid-cols-1 gap-2">
-                    <a href="https://www.bradfordcityafc.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/60 hover:border-amber hover:text-amber transition-all group bg-darkbg/50 rounded-xl">
+                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> Official Club
+                </h2>
+                <div class="grid grid-cols-1 gap-2.5">
+                    <a href="https://www.bradfordcityafc.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/80 bg-darkbg/40 rounded-xl hover-lift group">
                         <span class="text-sm font-semibold text-gray-200 group-hover:text-amber">Official Site</span>
                         <span class="text-xs font-mono text-gray-500 group-hover:text-amber">&nearr;</span>
                     </a>
-                    <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/60 hover:border-amber hover:text-amber transition-all group bg-darkbg/50 rounded-xl">
+                    <a href="https://www.bradfordcitystore.co.uk/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/80 bg-darkbg/40 rounded-xl hover-lift group">
                         <span class="text-sm font-semibold text-gray-200 group-hover:text-amber">Club Shop</span>
                         <span class="text-xs font-mono text-gray-500 group-hover:text-amber">&nearr;</span>
                     </a>
-                    <a href="https://www.bradfordcityafc.com/tickets/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/60 hover:border-amber hover:text-amber transition-all group bg-darkbg/50 rounded-xl">
-                        <span class="text-sm font-semibold text-gray-200 group-hover:text-amber">Tickets</span>
+                    <a href="https://www.bradfordcityafc.com/tickets/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/80 bg-darkbg/40 rounded-xl hover-lift group">
+                        <span class="text-sm font-semibold text-gray-200 group-hover:text-amber">Match Tickets</span>
                         <span class="text-xs font-mono text-gray-500 group-hover:text-amber">&nearr;</span>
                     </a>
                 </div>
@@ -88,60 +117,100 @@
 
             <!-- Community -->
             <div class="bg-cardbg border border-borderline rounded-2xl p-5 shadow-xl">
-                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest mb-4">Community</h2>
-                <div class="grid grid-cols-1 gap-2">
-                    <a href="https://widthofapost.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/60 hover:border-amber hover:text-amber transition-all group bg-darkbg/50 rounded-xl">
+                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-claret rounded-full"></span> Fan Ecosystem
+                </h2>
+                <div class="grid grid-cols-1 gap-2.5">
+                    <a href="https://widthofapost.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/80 bg-darkbg/40 rounded-xl hover-lift group">
                         <span class="text-sm font-semibold text-gray-200 group-hover:text-amber">Width of a Post</span>
                         <span class="text-xs font-mono text-gray-500 group-hover:text-amber">&nearr;</span>
                     </a>
-                    <a href="https://bantamtalk.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/60 hover:border-amber hover:text-amber transition-all group bg-darkbg/50 rounded-xl">
+                    <a href="https://bantamtalk.com/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/80 bg-darkbg/40 rounded-xl hover-lift group">
                         <span class="text-sm font-semibold text-gray-200 group-hover:text-amber">Bantam Talk</span>
                         <span class="text-xs font-mono text-gray-500 group-hover:text-amber">&nearr;</span>
                     </a>
-                    <a href="https://www.reddit.com/r/bantams/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/60 hover:border-amber hover:text-amber transition-all group bg-darkbg/50 rounded-xl">
+                    <a href="https://www.reddit.com/r/bantams/" target="_blank" class="flex items-center justify-between p-3 border border-borderline/80 bg-darkbg/40 rounded-xl hover-lift group">
                         <span class="text-sm font-semibold text-gray-200 group-hover:text-amber">r/bantams</span>
                         <span class="text-xs font-mono text-gray-500 group-hover:text-amber">&nearr;</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Discord Promo -->
-            <a href="#" class="block bg-amber text-black p-5 rounded-2xl border border-amber hover:bg-amber/90 transition-all shadow-xl group">
-                <h3 class="font-black text-lg uppercase tracking-tight">Join Discord</h3>
-                <p class="text-sm text-black/80 mt-1">Live match chat & community</p>
+            <!-- Discord Callout -->
+            <a href="#" class="block bg-gradient-to-br from-amber to-amberGlow text-black p-5 rounded-2xl border border-amber shadow-xl shadow-amber/10 hover:scale-[1.02] transition-all duration-300 group">
+                <h3 class="font-black text-lg uppercase tracking-tight flex items-center justify-between">
+                    Join Matchday Chat 
+                    <span class="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </h3>
+                <p class="text-xs font-medium text-black/80 mt-1">Real-time debate & reactions</p>
             </a>
 
         </div>
 
-        <!-- MIDDLE COLUMN: Aggregated Feed -->
-        <div class="lg:col-span-5 bg-cardbg border border-borderline rounded-2xl flex flex-col h-[600px] shadow-xl overflow-hidden opacity-0 animate-fade-in" style="animation-delay: 0.1s;">
-            <div class="p-4 border-b border-borderline flex justify-between items-center bg-darkbg/50">
-                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest">Aggregated Feed</h2>
-                <span class="text-[10px] font-mono text-amber border border-amber/30 px-2 py-0.5 bg-amber/10 rounded-full">LIVE SYNC</span>
+        <!-- MIDDLE COLUMN: Aggregated News Feed -->
+        <div class="lg:col-span-6 bg-cardbg border border-borderline rounded-2xl flex flex-col h-[650px] shadow-xl overflow-hidden opacity-0 animate-fade-in" style="animation-delay: 0.1s;">
+            <div class="p-4 border-b border-borderline flex justify-between items-center bg-darkbg/60">
+                <h2 class="text-xs font-mono text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live News Aggregator
+                </h2>
+                <span class="text-[10px] font-mono text-amber border border-amber/30 px-2.5 py-0.5 bg-amber/10 rounded-full font-semibold">WOAP + T&A</span>
             </div>
             
-            <div id="live-news-feed" class="overflow-y-auto custom-scrollbar flex-1 p-2">
+            <div id="live-news-feed" class="overflow-y-auto custom-scrollbar flex-1 p-3 space-y-2">
                 <!-- Loading State -->
-                <div class="p-6 flex flex-col space-y-6 animate-pulse">
-                    <div class="h-4 bg-borderline w-3/4 rounded"></div>
-                    <div class="h-4 bg-borderline w-1/2 rounded"></div>
-                    <div class="h-4 bg-borderline w-5/6 rounded mt-8"></div>
+                <div class="p-8 flex flex-col space-y-6 animate-pulse">
+                    <div class="h-5 bg-borderline w-3/4 rounded-lg"></div>
+                    <div class="h-5 bg-borderline w-1/2 rounded-lg"></div>
+                    <div class="h-5 bg-borderline w-5/6 rounded-lg mt-8"></div>
                 </div>
             </div>
         </div>
 
-        <!-- RIGHT COLUMN: Sofascore Table -->
-        <div class="lg:col-span-4 bg-cardbg border border-borderline rounded-2xl h-[600px] flex flex-col shadow-xl overflow-hidden opacity-0 animate-fade-in" style="animation-delay: 0.2s;">
-            <div class="p-4 border-b border-borderline bg-darkbg/50">
-                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest">League Table</h2>
-            </div>
-
-            <div class="flex-1 overflow-y-auto custom-scrollbar p-2">
-                <iframe id="sofa-standings-embed-3-97077" src="https://widgets.sofascore.com/en/embed/tournament/3/season/97077/standings/League%20One%2026%2F27?widgetTitle=League%20One%2026%2F27&showCompetitionLogo=true&theme=dark" style="height:1283px!important; max-width:100%!important; width:100%!important; border:none;" scrolling="no"></iframe>
-                <div style="font-size:10px; font-family: ui-monospace, SFMono-Regular, monospace; text-align:center; padding: 12px 0; color: #64748b;">
-                    Standings provided by <a target="_blank" href="https://www.sofascore.com/football/tournament/england/league-one/24#id:97077" style="color: #f8a313; text-decoration: none;">Sofascore</a>
+        <!-- RIGHT COLUMN: Matchday Focus / Quick Stats (Replacing clunky widgets) -->
+        <div class="lg:col-span-3 space-y-6 opacity-0 animate-fade-in" style="animation-delay: 0.2s;">
+            
+            <!-- Next Fixture Card -->
+            <div class="bg-cardbg border border-borderline rounded-2xl p-5 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-amber/5 rounded-full blur-2xl pointer-events-none"></div>
+                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest mb-4">Upcoming Fixture</h2>
+                
+                <div class="bg-darkbg/60 border border-borderline p-4 rounded-xl text-center space-y-3">
+                    <div class="text-[10px] font-mono text-amber uppercase tracking-wider">League One • Matchday 11</div>
+                    <div class="flex justify-between items-center font-bold text-base px-2">
+                        <span class="text-white">Reading</span>
+                        <span class="text-xs font-mono text-gray-500">VS</span>
+                        <span class="text-amber">City</span>
+                    </div>
+                    <div class="text-xs text-gray-400 pt-2 border-t border-borderline/60">
+                        Sat 3 Oct • 15:00 BST
+                    </div>
                 </div>
             </div>
+
+            <!-- Standings Quick Link Card -->
+            <div class="bg-cardbg border border-borderline rounded-2xl p-5 shadow-xl">
+                <h2 class="text-xs font-mono text-gray-400 uppercase tracking-widest mb-3">Table Status</h2>
+                <p class="text-xs text-gray-400 mb-4 leading-relaxed">View full division movement, form guides, and live goal differentials.</p>
+                <a href="https://www.sofascore.com/football/tournament/england/league-one/24#id:97077" target="_blank" class="block w-full text-center py-3 bg-darkbg border border-borderline hover:border-amber hover:text-amber rounded-xl text-xs font-bold uppercase tracking-wider transition-all">
+                    Open Live Standings &rarr;
+                </a>
+            </div>
+
+            <!-- Form Guide Badge -->
+            <div class="bg-cardbg border border-borderline rounded-2xl p-5 shadow-xl flex items-center justify-between">
+                <div>
+                    <h3 class="text-xs font-mono text-gray-400 uppercase tracking-widest">Recent Form</h3>
+                    <p class="text-xs text-gray-300 mt-0.5">Last 5 matches</p>
+                </div>
+                <div class="flex gap-1.5">
+                    <span class="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs flex items-center justify-center">W</span>
+                    <span class="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs flex items-center justify-center">W</span>
+                    <span class="w-6 h-6 rounded bg-amber/20 border border-amber/40 text-amber font-bold text-xs flex items-center justify-center">D</span>
+                    <span class="w-6 h-6 rounded bg-rose-500/20 border border-rose-500/40 text-rose-400 font-bold text-xs flex items-center justify-center">L</span>
+                    <span class="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs flex items-center justify-center">W</span>
+                </div>
+            </div>
+
         </div>
 
     </main>
@@ -152,7 +221,6 @@
         const taFeed = 'https://www.thetelegraphandargus.co.uk/sport/sportbcfc/?ref=rss';
         
         const fetchFeed = (url, sourceName, colorClass) => {
-            // Using a public CORS proxy array fallback to ensure reliable fetching
             const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
             return fetch(proxyUrl)
                 .then(res => res.json())
@@ -179,7 +247,7 @@
             feedContainer.innerHTML = ''; 
 
             if (combinedFeed.length === 0) {
-                feedContainer.innerHTML = '<div class="p-6 font-mono text-sm text-gray-500 text-center">NO FEED DATA AVAILABLE.</div>';
+                feedContainer.innerHTML = '<div class="p-8 font-mono text-sm text-gray-500 text-center">NO FEED DATA AVAILABLE.</div>';
                 return;
             }
 
@@ -190,7 +258,7 @@
                                  `${Math.floor(timeDiff/1440)}D AGO`;
 
                 feedContainer.innerHTML += `
-                    <a href="${item.link}" target="_blank" class="block p-4 m-2 border border-borderline/40 rounded-xl hover:border-amber/50 hover:bg-white/[0.03] transition-all group">
+                    <a href="${item.link}" target="_blank" class="block p-4 border border-borderline/60 bg-darkbg/40 rounded-xl hover-lift group">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 border rounded-md ${item.badgeColor}">${item.source}</span>
                             <span class="text-[10px] font-mono text-gray-400">${timeString}</span>
